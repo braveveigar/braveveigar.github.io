@@ -1,0 +1,6 @@
+- title: Email
+  url: mailto://gyol.han@scenera.net
+  icon: fas fa-envelope
+- title: GitHub
+  url: https://github.com/braveveigar
+  icon: fab fa-github
