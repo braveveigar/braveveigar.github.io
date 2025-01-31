@@ -9,6 +9,8 @@ toc:  true
 
 Object detection is one of the most actively researched topic.This field is applied across various industries, from detecting tumors in the medical field to identifying specific vehicles in the defense sector. This post explains three important object detection models called RCNN, YOLO, DETR.
 
+---
+
 ## RCNN
 
 [Rich feature hierarchies for accurate object detection and semantic segmentation](https://arxiv.org/abs/1311.2524)
@@ -16,6 +18,8 @@ Object detection is one of the most actively researched topic.This field is appl
 **RCNN** (Region-based Convolutional Neural Networks) is a two-stage object detection model that first generates possible object regions in an image using **selective search**, and then classifies each region using a **CNN** and an **SVM**. It improves accuracy by refining the object’s position with **bounding box regression**. However, since it involves two stages, the model is slow and not suitable for real-time applications. Models like Fast RCNN and Faster RCNN have improved on these issues.
 
 ![Figure 1](/assets/images/object_detection_01.png)
+
+---
 
 ## YOLO
 
@@ -25,6 +29,8 @@ Object detection is one of the most actively researched topic.This field is appl
 
 ![Figure 2](/assets/images/object_detection_02.png)
 
+---
+
 ## DETR
 
 [End-to-End Object Detection with Transformers](https://arxiv.org/abs/2005.12872)
@@ -33,6 +39,7 @@ Transformers were initially developed for natural language processing, but their
 
 ![Figure 3](/assets/images/object_detection_03.png)
 
+---
 
 ## Comparison
 
