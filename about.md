@@ -4,15 +4,14 @@ title: About
 ---
 Hi! I'm MLOps engineer at Scenera. I majored mathematics at SungKyunKwan University. I specialize in computer vision especially object detection and object tracking.
 
->**Work History**   
-Scenera (July 2024 - Present)
+## Work History
+**Scenera (July 2024 - Present)**   
+MLOps Engineer
+- Developed deep learning models for Aiviewer and Maistro
+- Created algorithms to enhance model performance
+- Designed an efficient management system using IoT big data analysis
 
->**Certificates**   
-TOEIC 860 (June 2024)  
-SQLD (October 2023)  
-정보처리기능사 (June 2016)
-
----
+## Technical Skills
 ### Programming Languages
 <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px;">
   <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" alt="Python" style="width: 80px; height: 80px;">
@@ -32,6 +31,7 @@ SQLD (October 2023)
 </div>
 
 
-
-
-
+## Certificates
+TOEIC 860 (June 2024)  
+SQLD (October 2023)  
+정보처리기능사 (June 2016)
