@@ -100,7 +100,7 @@ while True:
 
 ```
 
-![Figure 1](assets/images/gradient_descent_01.png)
+![Figure 1](/assets/images/gradient_descent_01.png)
 
 By running the gradient descent 520 times, we can confirm that it converges to the solution (0,0).
 
@@ -146,7 +146,7 @@ plt.show()
 
 ```
 
-![Figure 2](assets/images/gradient_descent_02.png)
+![Figure 2](/assets/images/gradient_descent_02.png)
 
 Point converges to (0,0)
 
