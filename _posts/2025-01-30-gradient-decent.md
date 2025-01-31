@@ -30,49 +30,49 @@ The method of solving an optimization problem using the conditions provided by t
 
 ---
 
-### 경사하강법
+### Gradient Descent
 
-경사하강법에 쓰이는 목적함수는 볼록함수입니다. 볼록함수의 정의에 의해
+The objective function used in gradient descent is a convex function. By definition of convex function,
 
 \\\(f(x_{k+1}) \geq f(x_k)+\nabla f(x_k)^T(x_{k+1}-x_k)\\\)
 
-가 성립합니다. 이때 위 하강법 정의 (b)가 성립하려면
+is satisfied. For the above gradient descent definition (b) to hold,
 
-\\\(\nabla f(x_k)^T(x_{k+1}-x_k)<0\\\)이고 이식을 (a)를 이용해 정리하면
+\\\(\nabla f(x_k)^T(x_{k+1}-x_k)<0\\\) and by using equation (a), this simplifies to
 
-\\\(\nabla f(x_k)^T t_k\Delta{x_k}<0\\\) 이 되어야 합니다.
+\\\(\nabla f(x_k)^T t_k\Delta{x_k}<0\\\)   
 
-\\\(t_k$는 양수이기에 $\Delta{x_k}\\\)를 설정하겠습니다.
+Since \\\(t_k\\\) is positive, we will set \\\(\Delta{x_k}\\\).
 
-> ❗️ 다변수 함수 \\\(f:R^n \rightarrow R\\\)이 가장 빠르게 증가하는 방향은 \\\(\nabla f\\\)	방향이다.
+> ❗️ For a multivariable function \\\(f:R^n \rightarrow R\\\), the direction of fastest increase is the direction of \\\(\nabla f\\\).
 > 
 
-위 정리를 거꾸로 말하면 $\Delta{x_k}$를  $-\nabla f(x_k)$로 놓으면 **가장 빠르게 감소하는 방향**으로 \\\(x_k\\\)가 향한다는 것을 알 수 있습니다.
+Reversing the above reasoning, if we set \\\(\Delta{x_k} = -\nabla f(x_k)\\\),we can see that \\\({x_k}\\\)moves in the direction of fastest decrease.
 
-그럼 이것을 파이썬으로 구현해보고 그래프로 한번 확인해보겠습니다.
+Now, let's implement this in Python and verify it with a graph.
 
-## 🧑🏻‍💻 경사하강법 코딩하기
+## 🧑🏻‍💻 Gradient Descent with code
 
-> \\\(f(x) = 2x^2+3xy+4y^2\\\) 일 때, \\\(minimize_{x \in R^2} f(x)\\\)를 경사하강법을 이용해 풀어보세요. (단, \\\(x_0=(2,4), t_k=0.01, \epsilon=10^{-8}\\\))
+> Given \\\(f(x) = 2x^2+3xy+4y^2\\\), solve \\\(minimize_{x \in R^2} f(x)\\\)using gradient descent. (where \\\(x_0=(2,4), t_k=0.01, \epsilon=10^{-8}\\\))
 > 
 
 ```python
-# 목적함수
+# objective function
 def f(x,y):
     return 2*x**2 + 3*x*y + 4*y**2
 
-# 목적함수를 x로 편미분한 함수
+# The partial derivative of the objective function with respect to x
 def fx(x,y):
     return 4*x+3*y
 
-# 목적함수를 y로 편미분한 함수
+# The partial derivative of the objective function with respect to y
 def fy(x,y):
     return 3*x+8*y
 
-# x_k,y_k의 좌표를 받을 리스트
+# A list to store the coordinates of x_k, y_k
 xlist,ylist=[2],[4]
 
-# 설정 값
+# configuration value
 x0,y0 = 2,4
 t=0.01
 eps=10**(-8)
@@ -100,9 +100,9 @@ while True:
 
 ```
 
-!https://velog.velcdn.com/images/braveveigar/post/573dd804-b6cb-4504-a08e-5d2d7d44ccd4/image.png
+![Figure 1](assets/images/gradient_descent_01.png)
 
-520번 경사하강법을 실행해서 (0,0) 즉 해에 수렴하는 것을 확인할 수 있습니다.
+By running the gradient descent 520 times, we can confirm that it converges to the solution (0,0).
 
 ---
 
@@ -113,22 +113,22 @@ from mpl_toolkits.mplot3d import axes3d
 import matplotlib.pyplot as plt
 from matplotlib import animation
 
-# x,y 값에 따른 z 좌표 리스트
+# list of z coordinates from x,y
 zlist=[]
 for i in range(len(xlist)):
 	zlist.append(f(xlist[i],ylist[i]))
 
-# 그래프 생성
+# figuring graph
 fig = plt.figure()
 ax = fig.add_subplot(111, projection='3d')
 ax.view_init(elev=30, azim=-30)
 
-# x, y 값 생성
+# generating x, y
 x = np.linspace(-4, 4, 10)
 y = np.linspace(-4, 4, 10)
 x, y = np.meshgrid(x, y)
 
-# z 값 계산
+# calculating z
 z = f(x,y)
 
 # plotting 3D
@@ -146,7 +146,7 @@ plt.show()
 
 ```
 
-![alt text](image.png)
+![Figure 2](assets/images/gradient_descent_02.png)
 
 Point converges to (0,0)
 
