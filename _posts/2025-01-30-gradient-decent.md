@@ -24,9 +24,9 @@ In machine learning, a loss function is used to calculate the difference between
 ## Descent
 
 
->(a) \(x_{k+1} = x_{k} + t_k \Delta{x_k},k=0,1,...\) (where \(t_k>0\))
+>(a) \\\(x_{k+1} = x_{k} + t_k \Delta{x_k},k=0,1,...\\\) (where \\\(t_k>0\\\))
 
->(b) \(f(x_{k+1})<f(x_k\))
+>(b) \\\(f(x_{k+1})<f(x_k\\\))
 
 위의 조건을 가진 수식을 이용해 최적화 문제를 푸는 방식을 하강법이라 정의합니다. 즉 $k$가 증가하면 함수값이 계속 감소하도록 수열을 설정하는 것이 관건입니다.
 
@@ -36,7 +36,7 @@ In machine learning, a loss function is used to calculate the difference between
 
 경사하강법에 쓰이는 목적함수는 볼록함수입니다. 볼록함수의 정의에 의해
 
-\(f(x_{k+1}) \geq f(x_k)+\nabla f(x_k)^T(x_{k+1}-x_k)\)
+\\\(f(x_{k+1}) \geq f(x_k)+\nabla f(x_k)^T(x_{k+1}-x_k)\\\)
 
 가 성립합니다. 이때 위 하강법 정의 (b)가 성립하려면
 
