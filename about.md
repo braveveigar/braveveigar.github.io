@@ -2,7 +2,14 @@
 layout: page
 title: About
 ---
+Hi! I'm MLOps engineer at Scenera. I majored mathematics at SungKyunKwan University. I specialize in computer vision especially object detection and object tracking.
 
-![D2A73B61-A8E2-41A3-B3BF-0FB7BAA36B20_1_105_c](https://github.com/user-attachments/assets/2a26ac1e-5150-479e-8640-98d86579a5c7)
+>**Work History**   
+Scenera (July 2024 - Present)
 
-Hi! I'm MLOps engineer at Scenera. I specialize in computer vision especially object detection and object tracking.
+>**Certificates**   
+TOEIC 860 (June 2024)  
+SQLD (October 2023)  
+정보처리기능사 (June 2016)
+
+
