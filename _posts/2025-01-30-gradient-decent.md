@@ -13,26 +13,24 @@ toc:  true
 
 Let’s suppose you're lost somewhere in the mountains. In a situation where you don’t know exactly where you are, the best way to find your way down might be to simply follow the slope. The steeper the slope, the quicker you’ll reach the lowest point. This post explains an algorithm called gradient descent, which solves optimization problems, such as those in convolution functions.
 
->Where exactly is it used? 🤔
-
+>**Where exactly is it used?** 🤔   
 In machine learning, a loss function is used to calculate the difference between the predicted values and the actual values. Gradient descent is then used to find the minimum of the loss function.
 
 ---
 
-# The Concept of Gradient Descent
+## The Concept of Gradient Descent
 
-## Descent
+### Descent
 
 
->(a) \\\(x_{k+1} = x_{k} + t_k \Delta{x_k},k=0,1,...\\\) (where \\\(t_k>0\\\))
+>(a) \\\(x_{k+1} = x_{k} + t_k \Delta{x_k},k=0,1,...\\\) (where \\\(t_k>0\\\))   
+(b) \\\(f(x_{k+1})<f(x_k\\\))
 
->(b) \\\(f(x_{k+1})<f(x_k\\\))
-
-위의 조건을 가진 수식을 이용해 최적화 문제를 푸는 방식을 하강법이라 정의합니다. 즉 $k$가 증가하면 함수값이 계속 감소하도록 수열을 설정하는 것이 관건입니다.
+The method of solving an optimization problem using the conditions provided by the equation is called gradient descent. In other words, the key is to set a sequence in such a way that the function value continues to decrease as \\\(k\\\) increases.
 
 ---
 
-## 경사하강법
+### 경사하강법
 
 경사하강법에 쓰이는 목적함수는 볼록함수입니다. 볼록함수의 정의에 의해
 
@@ -40,22 +38,22 @@ In machine learning, a loss function is used to calculate the difference between
 
 가 성립합니다. 이때 위 하강법 정의 (b)가 성립하려면
 
-$\nabla f(x_k)^T(x_{k+1}-x_k)<0$이고 이식을 (a)를 이용해 정리하면
+\\\(\nabla f(x_k)^T(x_{k+1}-x_k)<0\\\)이고 이식을 (a)를 이용해 정리하면
 
-$\nabla f(x_k)^T t_k\Delta{x_k}<0$ 이 되어야 합니다.
+\\\(\nabla f(x_k)^T t_k\Delta{x_k}<0\\\) 이 되어야 합니다.
 
-$t_k$는 양수이기에 $\Delta{x_k}$를 설정하겠습니다.
+\\\(t_k$는 양수이기에 $\Delta{x_k}\\\)를 설정하겠습니다.
 
-> ❗️ 다변수 함수 $f:R^n \rightarrow R$이 가장 빠르게 증가하는 방향은 $\nabla f$	방향이다.
+> ❗️ 다변수 함수 \\\(f:R^n \rightarrow R\\\)이 가장 빠르게 증가하는 방향은 \\\(\nabla f\\\)	방향이다.
 > 
 
-위 정리를 거꾸로 말하면 $\Delta{x_k}$를  $-\nabla f(x_k)$로 놓으면 **가장 빠르게 감소하는 방향**으로 $x_k$가 향한다는 것을 알 수 있습니다.
+위 정리를 거꾸로 말하면 $\Delta{x_k}$를  $-\nabla f(x_k)$로 놓으면 **가장 빠르게 감소하는 방향**으로 \\\(x_k\\\)가 향한다는 것을 알 수 있습니다.
 
 그럼 이것을 파이썬으로 구현해보고 그래프로 한번 확인해보겠습니다.
 
 ## 🧑🏻‍💻 경사하강법 코딩하기
 
-> $f(x) = 2x^2+3xy+4y^2$ 일 때, $minimize_{x \in R^2} f(x)$를 경사하강법을 이용해 풀어보세요. (단, $x_0=(2,4), t_k=0.01, \epsilon=10^{-8}$)
+> \\\(f(x) = 2x^2+3xy+4y^2\\\) 일 때, \\\(minimize_{x \in R^2} f(x)\\\)를 경사하강법을 이용해 풀어보세요. (단, \\\(x_0=(2,4), t_k=0.01, \epsilon=10^{-8}\\\))
 > 
 
 ```python
