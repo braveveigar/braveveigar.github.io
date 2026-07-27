@@ -16,6 +16,8 @@
   text-decoration: none;
   border: solid var(--border-color);
   border-width: 1px 0;
+  transition: color var(--transition-fast), background-image var(--transition-fast),
+              border-color var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
 
   &:first-child {
     margin-bottom: -1px;
@@ -24,7 +26,12 @@
 
 // Only provide a hover state for linked pagination items
 a.pagination-item:hover {
-  background-color: var(--border-color);
+  color: #fff;
+  background-color: transparent;
+  background-image: var(--accent-gradient);
+  border-color: transparent;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
 }
 
 @media (min-width: $sm-width) {

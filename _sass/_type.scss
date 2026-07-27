@@ -19,6 +19,23 @@ h2 {
   font-size: 1.5rem;
 }
 
+.post h2,
+.page h2 {
+  position: relative;
+  padding-bottom: .4rem;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 2.75rem;
+    height: 3px;
+    border-radius: 2px;
+    background-image: var(--accent-gradient);
+  }
+}
+
 h3 {
   margin-top: 1.5rem;
   font-size: 1.17rem;

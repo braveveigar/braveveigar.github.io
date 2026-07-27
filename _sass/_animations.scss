@@ -1,0 +1,33 @@
+// Scroll-reveal
+//
+// Elements marked `.reveal` fade in once `_includes/reveal.html` observes them
+// entering the viewport and adds `.in-view`. Post cards additionally slide up
+// slightly; single-article wrappers (`.post`, `.page`) just fade, since their
+// hover state doesn't compete with a transform.
+
+.reveal {
+  opacity: 0;
+}
+
+.reveal.in-view {
+  opacity: 1;
+}
+
+.post.reveal,
+.page.reveal {
+  transition: opacity .6s ease, transform .6s ease;
+  transform: translateY(16px);
+}
+
+.post.reveal.in-view,
+.page.reveal.in-view {
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

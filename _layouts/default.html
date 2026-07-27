@@ -18,7 +18,7 @@
       {%- if page.cover_image -%}
         {%- assign cover_image     = page.cover_image -%}
       {%- endif -%}
-      <div class="sidebar-left pure-u-1 pure-u-md-1-4" style="background-color: {{ cover_bg_color }}; color: {{ cover_color}}; {% if cover_image %}background-image: url({{ cover_image | relative_url }});{% endif %}">
+      <div class="sidebar-left {% unless cover_image %}sidebar-gradient{% endunless %} pure-u-1 pure-u-md-1-4" style="color: {{ cover_color }}; {% if cover_image %}background-color: {{ cover_bg_color }}; background-image: url({{ cover_image | relative_url }});{% endif %}">
         {%- include sidebar-left.html -%}
       </div>
 
@@ -33,6 +33,7 @@
     <script async src="https://use.fontawesome.com/releases/v5.0.12/js/all.js"></script>
 
     {%- include scroll.html -%}
+    {%- include reveal.html -%}
 
     {%- if page.math -%}
       {% include mathjax.html %}

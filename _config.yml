@@ -5,7 +5,8 @@ url: https://braveveigar.github.io
 avatar: /avatar.jpeg
 paginate: 5
 permalink: pretty
-cover_image: /bg.jpeg
+# No cover_image set: the sidebar falls back to the animated gradient
+# defined in _sass/_sidebar.scss (see .sidebar-gradient).
 
 # Gems
 plugins:

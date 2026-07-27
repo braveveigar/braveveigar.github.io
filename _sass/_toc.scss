@@ -13,13 +13,12 @@
   text-align: center;
   font-size: 1em;
   font-weight: bold;
-  border: 1px solid;
-  border-radius: 0.3em 0.3em 0 0;
-  padding: 0.5rem;
+  border: none;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  padding: 0.6rem;
   margin: 0;
-  color: var(--body-bg);
-  background-color: var(--body-color);
-  border-color: var(--border-color);
+  color: #fff;
+  background-image: var(--accent-gradient);
 }
 
 .toc-nav {
@@ -28,8 +27,9 @@
   overflow-y: scroll;
   border: 1px solid;
   border-top: 0px;
-  border-radius: 0 0 0.3em 0.3em;
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
   border-color: var(--border-color);
+  box-shadow: var(--shadow-sm);
 
   -webkit-hyphens: auto;
       -ms-hyphens: auto;
@@ -45,6 +45,13 @@
     margin: 0;
     display: block;
     text-decoration: none;
+    transition: color var(--transition-fast), background-color var(--transition-fast);
+
+    &:hover,
+    &:focus {
+      color: var(--accent);
+      background-color: rgba(147, 51, 234, .08);
+    }
   }
 
   ul {
