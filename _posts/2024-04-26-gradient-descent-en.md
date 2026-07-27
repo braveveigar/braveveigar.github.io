@@ -8,6 +8,7 @@ math: true
 toc:  true
 lang: en
 translation_key: gradient-descent
+permalink: /en/gradient-descent/
 ---
 
 Let’s suppose you're lost somewhere in the mountains. In a situation where you don’t know exactly where you are, the best way to find your way down might be to simply follow the slope. The steeper the slope, the quicker you’ll reach the lowest point. This post explains an algorithm called gradient descent, which solves optimization problems, such as those in convex functions.

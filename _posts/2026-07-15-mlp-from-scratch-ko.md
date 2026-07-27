@@ -8,6 +8,7 @@ math: true
 toc: true
 lang: ko
 translation_key: mlp-from-scratch
+permalink: /mlp-from-scratch/
 ---
 
 MNIST 손글씨 숫자 분류를 위한 fully-connected 신경망을 NumPy만으로 직접 구현하면서(딥러닝 프레임워크 없이 forward/backward propagation을 직접 작성) 정리한 개념 노트입니다.

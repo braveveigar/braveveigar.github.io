@@ -155,3 +155,17 @@
   transition: color var(--transition-fast), background-image var(--transition-fast),
               border-color var(--transition-fast), transform var(--transition-fast);
 }
+
+// Reuses .post-tag's pill styling for plain skill/technology lists (e.g. the
+// About page), outside of the tag-link context.
+.skill-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin: 0 0 var(--spacer) 0;
+
+  .post-tag {
+    font-family: var(--body-font);
+    font-size: 90%;
+  }
+}

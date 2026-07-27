@@ -1,3 +1,5 @@
+{%- include lang-prefix.html -%}
+{%- assign t = site.data.i18n[current_lang] -%}
 <header class="masthead">
   {% if site.avatar -%}
     <div class="avatar">
@@ -10,23 +12,22 @@
     </div>
   {%- endif %}
   <div class="masthead-title">
-    <a href="{{ "/" | relative_url }}" title="Home">{{ site.title }}</a>
+    <a href="{{ lang_prefix | append: '/' | relative_url }}" title="Home">{{ site.title }}</a>
   </div>
   <div class="masthead-tagline">
-    <small>{{ site.description }}</small>
+    <small>{{ t.tagline | default: site.description }}</small>
   </div>
   {%- include language-switcher.html -%}
-  {%- if site.data.navigation -%}
   <nav class="navigation">
     <ul class="navigation-list">
-    {%- for nav in site.data.navigation -%}
       <li class="navigation-item">
-        <a onclick="sessionStorage.setItem('forceCheckScroll', 'true')" href="{{ nav.url | relative_url }}">{{ nav.title | escape }}</a>
+        <a onclick="sessionStorage.setItem('forceCheckScroll', 'true')" href="{{ lang_prefix | append: '/' | relative_url }}">{{ t.nav_blog }}</a>
       </li>
-    {%- endfor -%}
+      <li class="navigation-item">
+        <a onclick="sessionStorage.setItem('forceCheckScroll', 'true')" href="{{ lang_prefix | append: '/about/' | relative_url }}">{{ t.nav_about }}</a>
+      </li>
     </ul>
   </nav>
-  {%- endif -%}
   {% if site.data.social -%}
     <div class="social pure-menu pure-menu-horizontal">
       <ul class="social-icons pure-menu-list">

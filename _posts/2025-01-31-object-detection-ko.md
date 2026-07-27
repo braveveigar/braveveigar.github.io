@@ -7,7 +7,7 @@ tags: [객체 탐지]
 toc: true
 lang: ko
 translation_key: object-detection
-permalink: /ko/object-detection/
+permalink: /object-detection/
 ---
 
 객체 탐지(Object Detection)는 현재 가장 활발히 연구되고 있는 분야 중 하나입니다. 의료 분야에서 종양을 탐지하는 것부터 국방 분야에서 특정 차량을 식별하는 것까지, 다양한 산업 전반에 걸쳐 활용되고 있습니다. 이 글에서는 RCNN, YOLO, DETR이라는 세 가지 중요한 객체 탐지 모델을 소개합니다.

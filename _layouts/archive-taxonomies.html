@@ -7,6 +7,7 @@ layout: default
 <h1>{{ page.title }}</h1>
 
 {% comment %} Check the type of archive {% endcomment %}
+{%- assign current_lang = page.lang | default: "ko" -%}
 {%- if page.type == 'categories' -%}
   {%- assign taxonomies = site.categories -%}
 {%- elsif page.type == 'tags' -%}
@@ -15,10 +16,19 @@ layout: default
   {%- assign taxonomies = none -%}
 {%- endif -%}
 
+{% comment %}
+  Tag/category names are themselves per-language strings (translated tags
+  like "딥러닝"/"deep learning"/"深度学习" only ever hold posts in that one
+  language already), except for a few kept identical across languages on
+  purpose (e.g. "numpy", "cnn", "mlp") — so every bucket's posts still need
+  filtering down to the current language, or those would show all 4
+  languages mixed together under one shared tag name.
+{% endcomment %}
+
 {% comment %} Calculate the max count of taxonomies {% endcomment %}
 {%- assign max_count = 0 -%}
 {%- for taxonomy in taxonomies -%}
-  {%- assign posts = taxonomy[1] -%}
+  {%- assign posts = taxonomy[1] | where: "lang", current_lang -%}
   {%- if posts.size > max_count -%}
     {%- assign max_count = posts.size -%}
   {%- endif -%}
@@ -30,7 +40,7 @@ layout: default
       {%- for taxonomy in taxonomies -%}
         {%- assign taxonomy_name = taxonomy[0] -%}
         {%- assign slugified_taxonomy_name = taxonomy_name | slugify -%}
-        {%- assign posts = taxonomy[1] -%}
+        {%- assign posts = taxonomy[1] | where: "lang", current_lang -%}
         {%- if posts.size == i -%}
           <li>
             {%- capture link -%}{{ page.permalink }}#{{ slugified_taxonomy_name }}{%- endcapture -%}
@@ -56,7 +66,7 @@ layout: default
   {%- for taxonomy in taxonomies -%}
     {%- assign taxonomy_name = taxonomy[0] -%}
     {%- assign slugified_taxonomy_name = taxonomy_name | slugify -%}
-    {%- assign posts = taxonomy[1] -%}
+    {%- assign posts = taxonomy[1] | where: "lang", current_lang -%}
     {%- if posts.size == i -%}
       <h2 id="{{ slugified_taxonomy_name }}">
         {%- if page.type == 'tags' -%}

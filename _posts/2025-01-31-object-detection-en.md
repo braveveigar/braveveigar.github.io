@@ -7,6 +7,7 @@ tags: [object detection]
 toc:  true
 lang: en
 translation_key: object-detection
+permalink: /en/object-detection/
 ---
 
 Object detection is one of the most actively researched topic.This field is applied across various industries, from detecting tumors in the medical field to identifying specific vehicles in the defense sector. This post explains three important object detection models called RCNN, YOLO, DETR.

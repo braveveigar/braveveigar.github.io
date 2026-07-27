@@ -1,3 +1,6 @@
+# Superseded: _includes/home-header.html now renders the Dates/Tags links
+# directly (with per-language URLs/labels from _data/i18n.yml) instead of
+# looping over this file. Left here for reference/rollback only.
 - type: dates
   title: Dates
   url: /dates/

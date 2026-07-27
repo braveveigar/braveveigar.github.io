@@ -8,7 +8,7 @@ math: true
 toc: true
 lang: ko
 translation_key: gradient-descent
-permalink: /ko/gradient-descent/
+permalink: /gradient-descent/
 ---
 
 산속에서 길을 잃었다고 가정해 봅시다. 정확히 어디에 있는지 모르는 상황에서, 산을 내려가는 가장 좋은 방법은 그저 경사를 따라가는 것일지도 모릅니다. 경사가 가파를수록 가장 낮은 지점에 더 빨리 도달하게 됩니다. 이 글에서는 볼록함수와 같은 최적화 문제를 푸는 경사하강법(gradient descent)이라는 알고리즘을 설명합니다.

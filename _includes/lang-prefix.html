@@ -1,0 +1,12 @@
+{%- comment -%}
+  Shared helper: assigns `lang_prefix` for the current page — "" for the
+  default language (ko), "/en" / "/zh" / "/ja" otherwise. Jekyll includes
+  share the including template's variable scope, so callers can just
+  `{%- include lang-prefix.html -%}` and then use `{{ lang_prefix }}` below.
+{%- endcomment -%}
+{%- assign current_lang = page.lang | default: "ko" -%}
+{%- if current_lang != "ko" -%}
+  {%- assign lang_prefix = "/" | append: current_lang -%}
+{%- else -%}
+  {%- assign lang_prefix = "" -%}
+{%- endif -%}

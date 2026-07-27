@@ -1,17 +1,18 @@
 {%- comment -%}
-  Renders a compact language tab row. If the current page has a
-  `translation_key`, tabs link to sibling posts (in `site.posts` or the
-  `translations` collection) sharing that key. On pages without one (home,
-  about, archives), tabs simply link home and none is marked current.
+  Renders a compact language tab row. Every translatable post/page in this
+  site (posts, home, about, dates, tags) shares a `translation_key` across
+  its 4 language files, so tabs link to whichever sibling (in site.posts or
+  site.pages) has the same key. Pages with no translation_key at all (e.g.
+  404) fall back to linking that language's homepage.
 {%- endcomment -%}
 {%- assign lang_codes = "ko,en,zh,ja" | split: "," -%}
 {%- assign lang_labels = "KO,EN,中,日" | split: "," -%}
 {%- assign lang_names = "한국어,English,中文,日本語" | split: "," -%}
 {%- assign all_translations = "" | split: "" -%}
 {%- if page.translation_key -%}
-  {%- assign post_translations = site.posts | where: "translation_key", page.translation_key -%}
-  {%- assign extra_translations = site.translations | where: "translation_key", page.translation_key -%}
-  {%- assign all_translations = post_translations | concat: extra_translations -%}
+  {%- assign post_matches = site.posts | where: "translation_key", page.translation_key -%}
+  {%- assign page_matches = site.pages | where: "translation_key", page.translation_key -%}
+  {%- assign all_translations = post_matches | concat: page_matches -%}
 {%- endif -%}
 <nav class="lang-switcher" aria-label="Language">
   <ul class="lang-switcher-list">
@@ -20,12 +21,17 @@
       {%- assign label = lang_labels[idx] -%}
       {%- assign name = lang_names[idx] -%}
       {%- assign match = all_translations | where: "lang", code | first -%}
+      {%- if code == "ko" -%}
+        {%- assign target_home = "/" -%}
+      {%- else -%}
+        {%- assign target_home = "/" | append: code | append: "/" -%}
+      {%- endif -%}
       {%- if page.lang == code -%}
         <li><span class="lang-tab is-current" title="{{ name }}" aria-current="true">{{ label }}</span></li>
       {%- elsif match -%}
         <li><a class="lang-tab" href="{{ match.url | relative_url }}" title="{{ name }}">{{ label }}</a></li>
       {%- else -%}
-        <li><a class="lang-tab is-disabled" href="{{ '/' | relative_url }}" title="{{ name }}">{{ label }}</a></li>
+        <li><a class="lang-tab is-disabled" href="{{ target_home | relative_url }}" title="{{ name }}">{{ label }}</a></li>
       {%- endif -%}
     {%- endfor -%}
   </ul>
