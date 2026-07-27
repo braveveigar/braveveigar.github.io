@@ -1,0 +1,14 @@
+.DS_Store
+
+# Jekyll build output/cache
+_site/
+.jekyll-cache/
+.jekyll-metadata
+.sass-cache/
+
+# Bundler
+.bundle/
+vendor/
+
+# Claude Code local settings
+.claude/
