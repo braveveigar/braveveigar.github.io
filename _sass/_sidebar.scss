@@ -2,62 +2,17 @@
 //
 // Styles for the sidebar.
 
-// Animated gradient fallback used when no cover_image is configured.
-// Note: `.sidebar-left` is `position: fixed` at $md-width+ (see _layout.scss),
-// which already establishes the containing block the blob pseudo-elements
-// need below. Don't set `position` here unconditionally — it would win the
-// cascade (this partial compiles after _layout.scss) and silently downgrade
-// the sidebar from fixed to static on desktop. Only mobile (where the
-// sidebar isn't fixed) needs a local `position: relative` fallback.
+// Calm fallback background used when no cover_image is configured: a subtle,
+// static warm gradient — no motion, no color-blocked panel. Text inside uses
+// the ordinary theme-aware colors (see default.html, which only forces a
+// custom text/bg color when a real cover_image is set).
+//
+// Note: `.sidebar-left` is `position: fixed` at $md-width+ (see _layout.scss).
+// Don't set `position` here unconditionally — it would win the cascade (this
+// partial compiles after _layout.scss) and silently downgrade the sidebar
+// from fixed to static on desktop.
 .sidebar-gradient {
-  overflow: hidden;
-  background-image: linear-gradient(135deg, #4338ca 0%, #6d28d9 45%, #a21caf 100%);
-  background-size: 200% 200%;
-  animation: gradient-shift 16s ease-in-out infinite alternate;
-
-  &::before,
-  &::after {
-    content: "";
-    position: absolute;
-    z-index: 0;
-    border-radius: 50%;
-    filter: blur(60px);
-    opacity: .5;
-    pointer-events: none;
-  }
-
-  &::before {
-    width: 16rem;
-    height: 16rem;
-    top: -4rem;
-    right: -4rem;
-    background: #f472b6;
-    animation: float-blob-1 14s ease-in-out infinite;
-  }
-
-  &::after {
-    width: 14rem;
-    height: 14rem;
-    bottom: -3rem;
-    left: -3rem;
-    background: #22d3ee;
-    animation: float-blob-2 18s ease-in-out infinite;
-  }
-}
-
-@keyframes gradient-shift {
-  0% { background-position: 0% 0%; }
-  100% { background-position: 100% 100%; }
-}
-
-@keyframes float-blob-1 {
-  0%, 100% { transform: translate(0, 0); }
-  50% { transform: translate(-1rem, 1.5rem); }
-}
-
-@keyframes float-blob-2 {
-  0%, 100% { transform: translate(0, 0); }
-  50% { transform: translate(1.5rem, -1rem); }
+  background-image: linear-gradient(160deg, var(--sidebar-bg-start), var(--sidebar-bg-end));
 }
 
 @keyframes fade-slide-up {
@@ -66,8 +21,6 @@
 }
 
 .masthead {
-  position: relative;
-  z-index: 1;
   text-align: center;
   margin: auto;
   width: 100%;
@@ -89,12 +42,12 @@
   display: block;
   margin-right: auto;
   margin-left: auto;
-  box-shadow: 0 0 0 4px rgba(255, 255, 255, .15), var(--shadow-md);
+  box-shadow: 0 0 0 4px rgba(191, 91, 55, .16), var(--shadow-md);
   transition: transform var(--transition), box-shadow var(--transition);
 
   &:hover {
-    transform: scale(1.05) rotate(1deg);
-    box-shadow: 0 0 0 4px rgba(255, 255, 255, .3), var(--shadow-lg);
+    transform: scale(1.05);
+    box-shadow: 0 0 0 4px rgba(191, 91, 55, .28), var(--shadow-lg);
   }
 }
 
@@ -106,16 +59,13 @@
   animation: fade-slide-up .6s ease .05s both;
 
   a {
-    background: linear-gradient(135deg, #fff, #e9d5ff);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    transition: filter var(--transition-fast);
+    color: var(--heading-color);
+    transition: color var(--transition-fast);
   }
 
   a:hover,
   a:focus {
-    filter: brightness(1.15);
+    color: var(--accent);
   }
 }
 
@@ -124,7 +74,7 @@
   margin: 0;
   font-size: 1.25rem;
   font-weight: 400;
-  opacity: .8;
+  opacity: .75;
   animation: fade-slide-up .6s ease .1s both;
 }
 
@@ -143,11 +93,12 @@
 .navigation-item a {
   position: relative;
   background: transparent;
-  color: inherit;
+  color: var(--heading-color);
   letter-spacing: 0.05em;
   font-size: 90%;
   padding-bottom: .2rem;
   border-bottom: none;
+  transition: color var(--transition-fast);
 
   &::after {
     content: "";
@@ -156,20 +107,20 @@
     bottom: 0;
     width: 100%;
     height: 2px;
-    background: currentColor;
-    transform: scaleX(1);
+    background: var(--accent);
+    transform: scaleX(.4);
     transform-origin: left;
     transition: transform var(--transition-fast);
   }
 
   &:hover,
   &:focus {
-    color: #fff;
+    color: var(--accent);
   }
 
   &:hover::after,
   &:focus::after {
-    transform: scaleX(1.08);
+    transform: scaleX(1);
   }
 }
 
@@ -184,25 +135,68 @@
 .social-icon {
   display: inline-block;
   padding: var(--spacer);
+  color: var(--heading-color);
   transition: transform var(--transition-fast), color var(--transition-fast);
 
   &:hover,
   &:focus {
-    color: #fff;
+    color: var(--accent);
     background-color: transparent;
     transform: translateY(-3px);
   }
 }
 
+// Language switcher — compact pill tabs, shown at the top of the sidebar.
+.lang-switcher {
+  margin-top: var(--spacer);
+  animation: fade-slide-up .6s ease .02s both;
+}
+
+.lang-switcher-list {
+  display: flex;
+  justify-content: center;
+  gap: .35rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.lang-tab {
+  display: inline-block;
+  padding: .3rem .65rem;
+  font-size: .75rem;
+  font-weight: 600;
+  letter-spacing: .03em;
+  border-radius: 999px;
+  text-decoration: none;
+  color: var(--heading-color);
+  background-color: rgba(191, 91, 55, .1);
+  transition: background-color var(--transition-fast), color var(--transition-fast), opacity var(--transition-fast);
+
+  &:hover,
+  &:focus {
+    color: #fff;
+    background-color: var(--accent-solid);
+  }
+
+  &.is-current {
+    color: #fff;
+    background-image: var(--accent-gradient);
+    cursor: default;
+  }
+
+  &.is-disabled {
+    opacity: .45;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .sidebar-gradient,
-  .sidebar-gradient::before,
-  .sidebar-gradient::after,
   .avatar,
   .masthead-title,
   .masthead-tagline,
   .navigation-list,
-  .social {
+  .social,
+  .lang-switcher {
     animation: none;
   }
 }
@@ -210,12 +204,5 @@
 @media (max-width: $md-width) {
   .avatar-image {
     width: 15%;
-  }
-
-  // Below $md-width, .sidebar-left is `position: static` (the fixed rule in
-  // _layout.scss only kicks in at $md-width+), so give the gradient blobs a
-  // containing block of their own here instead.
-  .sidebar-gradient {
-    position: relative;
   }
 }

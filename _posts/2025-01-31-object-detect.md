@@ -5,6 +5,8 @@ date: 2025-01-31 17:25 +0800
 last_modified_at: 2025-01-31 17:25 +0800
 tags: [object detection]
 toc:  true
+lang: en
+translation_key: object-detection
 ---
 
 Object detection is one of the most actively researched topic.This field is applied across various industries, from detecting tumors in the medical field to identifying specific vehicles in the defense sector. This post explains three important object detection models called RCNN, YOLO, DETR.
@@ -48,6 +50,5 @@ Transformers were initially developed for natural language processing, but their
 |Model Type|Region Proposal + CNN|End-to-End Grid-based|End-to-End Transformer-based|
 |Speed|Slow|Fast|Slow|
 |Accuracy|High|Medium-High|High|
-|Object Detection|Region proposals|CNN processing|Single pass prediction|Transformer-based attention|
 |Advantages|High accuracy, detailed detection|Real-time speed, simple structure|Good for small objects, handles complex relationships well|
 |Disadvantages|Slow speed, high computation|Lower accuracy in some cases, struggles with small objects|Slow training & inference, needs lots of data|

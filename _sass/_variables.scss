@@ -1,14 +1,15 @@
 :root {
-  --gray-000: #f8f9fa;
-  --gray-100: #f1f3f5;
-  --gray-200: #e9ecef;
-  --gray-300: #dee2e6;
-  --gray-400: #ced4da;
-  --gray-500: #adb5bd;
-  --gray-600: #868e96;
-  --gray-700: #495057;
-  --gray-800: #343a40;
-  --gray-900: #212529;
+  // Warm neutral scale (replaces a cooler blue-gray scale to read calmer)
+  --gray-000: #faf9f6;
+  --gray-100: #f3f1ea;
+  --gray-200: #e9e5db;
+  --gray-300: #ded8ca;
+  --gray-400: #c9c1af;
+  --gray-500: #a8a095;
+  --gray-600: #7c7669;
+  --gray-700: #57524a;
+  --gray-800: #3a362f;
+  --gray-900: #262420;
 
   --red: #fa5252;
   --pink: #e64980;
@@ -30,17 +31,25 @@
   --body-font-size: 18px;
   --body-line-height: 1.6;
   --body-color: var(--gray-700);
-  --body-bg: #fff;
+  --body-bg: #fdfcf9;
 
   --text-font: Times, "Times New Roman", "Free Serif", "Noto Serif", TimesNewRomanPSMT, "Droid Serif";
 
-  // Indigo / purple accent system
-  --accent: #4f46e5;
-  --accent-2: #9333ea;
-  --accent-gradient: linear-gradient(135deg, var(--accent), var(--accent-2));
-
+  // Warm clay/terracotta accent (calmer, Claude-like)
+  --accent: #bf5b37;
   --link-color: var(--accent);
-  --link-hover-color: #7c3aed;
+  --link-hover-color: #9c4a2c;
+
+  // Fixed-vividness tones for fills paired with white text (buttons, TOC header,
+  // tag pills) — kept constant across themes, unlike --accent which lightens in
+  // dark mode for legibility as plain text/borders on a dark background.
+  --accent-solid: #bf5b37;
+  --accent-solid-2: #c9873a;
+  --accent-gradient: linear-gradient(135deg, var(--accent-solid), var(--accent-solid-2));
+
+  // Sidebar panel: a slightly deeper warm tone than the main content background
+  --sidebar-bg-start: #f2ead9;
+  --sidebar-bg-end: #e8dcc4;
 
   --heading-color: var(--gray-900);
 
@@ -48,16 +57,16 @@
   --border-radius: .25rem;
   --radius-lg: .9rem;
 
-  --shadow-sm: 0 1px 2px rgba(15, 23, 42, .06), 0 1px 1px rgba(15, 23, 42, .04);
-  --shadow-md: 0 12px 24px -10px rgba(79, 70, 229, .22);
-  --shadow-lg: 0 24px 48px -16px rgba(79, 70, 229, .3);
+  --shadow-sm: 0 1px 2px rgba(38, 36, 32, .06), 0 1px 1px rgba(38, 36, 32, .04);
+  --shadow-md: 0 12px 24px -10px rgba(191, 91, 55, .18);
+  --shadow-lg: 0 24px 48px -16px rgba(191, 91, 55, .24);
 
   --transition-fast: 150ms cubic-bezier(.4, 0, .2, 1);
   --transition: 280ms cubic-bezier(.4, 0, .2, 1);
 
   --code-font: "JetBrains Mono", SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   --code-color: var(--grape);
-  --code-bg: #fbf1c7;
+  --code-bg: #f3ecd9;
 
   --spacer: 1rem;
   --spacer-2: calc(var(--spacer) * 1.5);
@@ -67,23 +76,23 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --body-color: var(--gray-300);
-    --body-bg: #15131c;
+    --body-bg: #262624;
 
-    --heading-color: #fff;
+    --heading-color: #f5f4ee;
 
-    --accent: #a5b4fc;
-    --accent-2: #d8b4fe;
+    --accent: #e0946b;
+    --link-hover-color: #f0ae85;
 
-    --link-color: var(--accent);
-    --link-hover-color: #c4b5fd;
+    --sidebar-bg-start: #201e1b;
+    --sidebar-bg-end: #171615;
 
-    --border-color: rgba(255,255,255,.15);
+    --border-color: rgba(245, 244, 238, .13);
 
     --shadow-sm: 0 1px 2px rgba(0, 0, 0, .3);
     --shadow-md: 0 12px 24px -10px rgba(0, 0, 0, .5);
     --shadow-lg: 0 24px 48px -16px rgba(0, 0, 0, .6);
 
-    --code-bg: #282828;
+    --code-bg: #2b2724;
   }
 }
 

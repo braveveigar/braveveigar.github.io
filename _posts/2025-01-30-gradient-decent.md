@@ -6,9 +6,11 @@ last_modified_at: 2025-01-30 11:34:25 +0800
 tags: [mathematical optimization, numpy]
 math: true
 toc:  true
+lang: en
+translation_key: gradient-descent
 ---
 
-Let’s suppose you're lost somewhere in the mountains. In a situation where you don’t know exactly where you are, the best way to find your way down might be to simply follow the slope. The steeper the slope, the quicker you’ll reach the lowest point. This post explains an algorithm called gradient descent, which solves optimization problems, such as those in convolution functions.
+Let’s suppose you're lost somewhere in the mountains. In a situation where you don’t know exactly where you are, the best way to find your way down might be to simply follow the slope. The steeper the slope, the quicker you’ll reach the lowest point. This post explains an algorithm called gradient descent, which solves optimization problems, such as those in convex functions.
 
 >**Where exactly is it used?** 🤔   
 In machine learning, a loss function is used to calculate the difference between the predicted values and the actual values. Gradient descent is then used to find the minimum of the loss function.
