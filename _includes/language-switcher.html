@@ -1,13 +1,13 @@
 {%- comment -%}
   Renders a compact language tab row. Every translatable post/page in this
   site (posts, home, about, dates, tags) shares a `translation_key` across
-  its 4 language files, so tabs link to whichever sibling (in site.posts or
+  its language files, so tabs link to whichever sibling (in site.posts or
   site.pages) has the same key. Pages with no translation_key at all (e.g.
   404) fall back to linking that language's homepage.
 {%- endcomment -%}
-{%- assign lang_codes = "ko,en,zh,ja" | split: "," -%}
-{%- assign lang_labels = "KO,EN,中,日" | split: "," -%}
-{%- assign lang_names = "한국어,English,中文,日本語" | split: "," -%}
+{%- assign lang_codes = "ko,en" | split: "," -%}
+{%- assign lang_labels = "KO,EN" | split: "," -%}
+{%- assign lang_names = "한국어,English" | split: "," -%}
 {%- assign all_translations = "" | split: "" -%}
 {%- if page.translation_key -%}
   {%- assign post_matches = site.posts | where: "translation_key", page.translation_key -%}

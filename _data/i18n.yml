@@ -14,15 +14,3 @@ en:
   nav_about: About
   archive_dates: Dates
   archive_tags: Tags
-zh:
-  tagline: TnM Tech MLOps 工程师
-  nav_blog: 博客
-  nav_about: 关于
-  archive_dates: 日期
-  archive_tags: 标签
-ja:
-  tagline: TnM Tech MLOpsエンジニア
-  nav_blog: ブログ
-  nav_about: 自己紹介
-  archive_dates: 日付
-  archive_tags: タグ
