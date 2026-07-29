@@ -1,0 +1,88 @@
+// Gallery
+//
+// Instagram-style square photo grid + a pure-CSS lightbox (no JS): each
+// thumbnail links to a #photo-N fragment; the matching overlay uses
+// :target to show itself. Closing links point at a dummy "#_" fragment
+// instead of a bare "#" so the browser doesn't jump to the page's top.
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: .35rem;
+  margin-bottom: var(--spacer);
+}
+
+.gallery-item {
+  display: block;
+  position: relative;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: var(--border-radius);
+  background: var(--gray-200);
+
+  img {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    object-fit: cover;
+    border-radius: 0;
+    transition: transform var(--transition);
+  }
+
+  &:hover img {
+    transform: scale(1.06);
+  }
+}
+
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+
+  &:target {
+    display: flex;
+  }
+
+  .lightbox-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(20, 18, 16, .88);
+  }
+
+  img {
+    position: relative;
+    max-width: min(90vw, 1100px);
+    max-height: 88vh;
+    margin: 0;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .lightbox-close {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.5rem;
+    display: flex;
+    width: 2.5rem;
+    height: 2.5rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .12);
+    color: #fff;
+    font-size: 1.75rem;
+    line-height: 1;
+    text-decoration: none;
+  }
+}
+
+@media (min-width: $sm-width) {
+  .gallery-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: .5rem;
+  }
+}

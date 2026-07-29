@@ -12,7 +12,7 @@
     </div>
   {%- endif %}
   <div class="masthead-title">
-    <a href="{{ lang_prefix | append: '/' | relative_url }}" title="Home">{{ site.title }}</a>
+    <a href="{{ lang_prefix | append: '/' | relative_url }}" title="Home">{{ t.name | default: site.title }}</a>
   </div>
   <div class="masthead-tagline">
     <small>{{ t.tagline | default: site.description }}</small>
@@ -25,6 +25,9 @@
       </li>
       <li class="navigation-item">
         <a onclick="sessionStorage.setItem('forceCheckScroll', 'true')" href="{{ lang_prefix | append: '/about/' | relative_url }}">{{ t.nav_about }}</a>
+      </li>
+      <li class="navigation-item">
+        <a onclick="sessionStorage.setItem('forceCheckScroll', 'true')" href="{{ lang_prefix | append: '/gallery/' | relative_url }}">{{ t.nav_gallery }}</a>
       </li>
     </ul>
   </nav>
