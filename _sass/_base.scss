@@ -61,7 +61,8 @@ a {
   }
 }
 
-img {
+img,
+video {
   display: block;
   max-width: 100%;
   margin-bottom: var(--spacer);
