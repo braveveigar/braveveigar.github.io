@@ -10,5 +10,6 @@ _site/
 .bundle/
 vendor/
 
-# Claude Code local settings
-.claude/
+# Claude Code local settings (skills are project behavior, tracked instead)
+.claude/*
+!.claude/skills/
