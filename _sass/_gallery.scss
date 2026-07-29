@@ -1,30 +1,31 @@
 // Gallery
 //
-// Instagram-style square photo grid + a pure-CSS lightbox (no JS): each
-// thumbnail links to a #photo-N fragment; the matching overlay uses
-// :target to show itself. Closing links point at a dummy "#_" fragment
-// instead of a bare "#" so the browser doesn't jump to the page's top.
+// Masonry-style photo layout (CSS multi-column — each photo keeps its own
+// natural aspect ratio instead of being cropped into a uniform grid) + a
+// pure-CSS lightbox (no JS): each thumbnail links to a #photo-N fragment;
+// the matching overlay uses :target to show itself. Closing links point at
+// a dummy "#_" fragment instead of a bare "#" so the browser doesn't jump
+// to the page's top.
 
 .gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: .35rem;
+  columns: 2;
+  column-gap: .5rem;
   margin-bottom: var(--spacer);
 }
 
 .gallery-item {
   display: block;
-  position: relative;
-  aspect-ratio: 1 / 1;
-  overflow: hidden;
+  break-inside: avoid;
+  margin-bottom: .5rem;
   border-radius: var(--border-radius);
+  overflow: hidden;
   background: var(--gray-200);
 
   img {
+    display: block;
     width: 100%;
-    height: 100%;
+    height: auto;
     margin: 0;
-    object-fit: cover;
     border-radius: 0;
     transition: transform var(--transition);
   }
@@ -32,6 +33,13 @@
   &:hover img {
     transform: scale(1.06);
   }
+}
+
+// Lock background scroll while a lightbox is open (avoids the page
+// scrolling behind the fixed overlay on touch devices).
+body:has(.lightbox:target) {
+  overflow: hidden;
+  height: 100%;
 }
 
 .lightbox {
@@ -82,7 +90,12 @@
 
 @media (min-width: $sm-width) {
   .gallery-grid {
-    grid-template-columns: repeat(4, 1fr);
-    gap: .5rem;
+    columns: 3;
+  }
+}
+
+@media (min-width: $md-width) {
+  .gallery-grid {
+    columns: 4;
   }
 }

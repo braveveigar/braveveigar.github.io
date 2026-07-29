@@ -21,7 +21,12 @@
 
 .post.reveal.in-view,
 .page.reveal.in-view {
-  transform: translateY(0);
+  // `none`, not `translateY(0)` — any non-none transform value (even an
+  // identity transform) makes this element a new containing block for
+  // `position: fixed` descendants, which broke the gallery lightbox: it
+  // ended up positioned relative to this whole (very tall) article
+  // instead of the actual viewport.
+  transform: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
